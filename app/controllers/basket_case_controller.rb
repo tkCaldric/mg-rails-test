@@ -11,7 +11,7 @@ class BasketCaseController < ApplicationController
   end
 
   def order_by_amount
-    # code here
+    @list_items = @list_items.sort_by { |_, value| value }.reverse
 
     render 'basket_case/index'
   end
