@@ -4,37 +4,37 @@ class BasketCaseController < ApplicationController
 
   def index; end
 
-  def order_by_fruit_asc
-    @list_items = @list_items.sort
+  def order_by_fruit
+    if params[:order] == "desc"
+      @list_items = @list_items.sort.reverse # Sort descending
+    else
+      @list_items = @list_items.sort # Sort ascending
+    end
     render 'basket_case/index'
   end
 
-  def order_by_fruit_dsc
-    @list_items = @list_items.sort.reverse
+  def order_by_amount
+    if params[:order] == "desc"
+      @list_items = @list_items.sort_by(&:last).reverse # Sort by amount descending
+    else
+      @list_items = @list_items.sort_by(&:last) # Sort by amount ascending
+    end
     render 'basket_case/index'
   end
 
-  def order_by_amount_asc
-    @list_items = @list_items.sort_by(&:last)
-    render 'basket_case/index'
-  end
-
-  def order_by_amount_dsc
-    @list_items = @list_items.sort_by(&:last).reverse
-    render 'basket_case/index'
-  end
-
+ 
   private
-    def set_fruits
-      @fruits = {
-        oranges: 5,
-        apples: 9,
-        grapes: 3,
-        watermelons: 2
-      }
-    end
 
-    def set_items
-      @list_items = @fruits
-    end
+  def set_fruits
+    @fruits = {
+      oranges: 5,
+      apples: 9,
+      grapes: 3,
+      watermelons: 2
+    }
+  end
+
+  def set_items
+    @list_items = @fruits
+  end
 end
