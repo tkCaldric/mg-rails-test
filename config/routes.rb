@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "basket_case#index"
 
-  get 'basket_case/order_by_fruit'
-  get 'basket_case/order_by_amount'
+  get 'basket_case/order_by_fruit_dsc'
+  get 'basket_case/order_by_fruit_asc'
+  get 'basket_case/order_by_amount_dsc'
+  get 'basket_case/order_by_amount_asc'
+
 end

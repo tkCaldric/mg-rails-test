@@ -4,13 +4,23 @@ class BasketCaseController < ApplicationController
 
   def index; end
 
-  def order_by_fruit
+  def order_by_fruit_asc
     @list_items = @list_items.sort
     render 'basket_case/index'
   end
 
-  def order_by_amount
+  def order_by_fruit_dsc
+    @list_items = @list_items.sort.reverse
+    render 'basket_case/index'
+  end
+
+  def order_by_amount_asc
     @list_items = @list_items.sort_by(&:last)
+    render 'basket_case/index'
+  end
+
+  def order_by_amount_dsc
+    @list_items = @list_items.sort_by(&:last).reverse
     render 'basket_case/index'
   end
 
